@@ -1,0 +1,15 @@
+{
+  "name": "hello-world",
+  "scripts": {
+    "dev": "wrangler dev src/index.ts",
+    "deploy": "wrangler deploy --minify src/index.ts"
+  },
+  "dependencies": {
+    "@trigger.dev/sdk": "3.0.0-beta.56",
+    "hono": "^4.5.11"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240529.0",
+    "wrangler": "^3.57.2"
+  }
+}
