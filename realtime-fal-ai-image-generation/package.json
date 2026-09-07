@@ -17,7 +17,7 @@
     "node-fetch": "^3.3.2",
     "react": "19.0.0-rc-69d4b800-20241021",
     "react-dom": "19.0.0-rc-69d4b800-20241021",
-    "zod": "^3.23.8"
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "@trigger.dev/build": "3.1.2",

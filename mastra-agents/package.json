@@ -11,7 +11,7 @@
     "@mastra/memory": "^0.11.3",
     "@mastra/pg": "^0.12.3",
     "@trigger.dev/sdk": "v4-beta",
-    "zod": "^3.25.67"
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "@trigger.dev/build": "v4-beta",

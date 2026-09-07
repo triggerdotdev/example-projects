@@ -753,7 +753,7 @@
           "@opentelemetry/api": "@opentelemetry/api@1.9.0"
         }
       },
-      "@trigger.dev/core@0.0.0-prerelease-20240825150620_@opentelemetry+api@1.9.0_zod@3.22.3": {
+      "@trigger.dev/core@0.0.0-prerelease-20240825150620_@opentelemetry+api@1.9.0_zod@3.25.76": {
         "integrity": "sha512-lFlYRMygi8T3i8qnx+hzmd5u2HnoA4lkmeA7e1ESTBgD8b/TsHIkwfcNk6eLmlnspvE2dQp7x7Am0Ss/g7L4fw==",
         "dependencies": {
           "@google-cloud/precise-date": "@google-cloud/precise-date@4.0.0",
@@ -772,20 +772,20 @@
           "humanize-duration": "humanize-duration@3.32.1",
           "socket.io-client": "socket.io-client@4.7.5",
           "superjson": "superjson@2.2.1",
-          "zod": "zod@3.22.3",
+          "zod": "zod@3.25.76",
           "zod-error": "zod-error@1.5.0",
-          "zod-validation-error": "zod-validation-error@1.5.0_zod@3.22.3"
+          "zod-validation-error": "zod-validation-error@1.5.0_zod@3.25.76"
         }
       },
       "@trigger.dev/core@2.3.19": {
         "integrity": "sha512-ZL5G8pBFOamgmHzg4hgjt+5jYBJlkvizTOYPAjhNlqhzq+wr1Czsp7I5JeynHSo55bc/TMen75uGh7blwBCaNw==",
         "dependencies": {
           "ulidx": "ulidx@2.4.0",
-          "zod": "zod@3.22.3",
+          "zod": "zod@3.25.76",
           "zod-error": "zod-error@1.5.0"
         }
       },
-      "@trigger.dev/core@3.0.0-beta.50_@opentelemetry+api@1.9.0_@opentelemetry+api-logs@0.48.0_zod@3.22.3": {
+      "@trigger.dev/core@3.0.0-beta.50_@opentelemetry+api@1.9.0_@opentelemetry+api-logs@0.48.0_zod@3.25.76": {
         "integrity": "sha512-ZnWFQjs1QxfKSSh4LTpGGP9vbiolLtn7F6U6BJlADL/6gVfRYaOFonBWGBvgLXJdPRtUQ1wfE9+LkWF/fouPKA==",
         "dependencies": {
           "@google-cloud/precise-date": "@google-cloud/precise-date@4.0.0",
@@ -804,12 +804,12 @@
           "socket.io-client": "socket.io-client@4.7.5",
           "superjson": "superjson@2.2.1",
           "ulidx": "ulidx@2.4.0",
-          "zod": "zod@3.22.3",
+          "zod": "zod@3.25.76",
           "zod-error": "zod-error@1.5.0",
-          "zod-validation-error": "zod-validation-error@1.5.0_zod@3.22.3"
+          "zod-validation-error": "zod-validation-error@1.5.0_zod@3.25.76"
         }
       },
-      "@trigger.dev/core@3.0.0-beta.55_@opentelemetry+api@1.9.0_@opentelemetry+api-logs@0.48.0_zod@3.22.3": {
+      "@trigger.dev/core@3.0.0-beta.55_@opentelemetry+api@1.9.0_@opentelemetry+api-logs@0.48.0_zod@3.25.76": {
         "integrity": "sha512-MXfBnM3HvT+RyXwlIeQjUJ0lWKg5vFrPugwy5AbDaio/p8QLyRpEHIL8zcMU6rUxdjD7jVbZk3KTUnGRLRZ+tw==",
         "dependencies": {
           "@google-cloud/precise-date": "@google-cloud/precise-date@4.0.0",
@@ -828,9 +828,9 @@
           "socket.io-client": "socket.io-client@4.7.5",
           "superjson": "superjson@2.2.1",
           "ulidx": "ulidx@2.4.0",
-          "zod": "zod@3.22.3",
+          "zod": "zod@3.25.76",
           "zod-error": "zod-error@1.5.0",
-          "zod-validation-error": "zod-validation-error@1.5.0_zod@3.22.3"
+          "zod-validation-error": "zod-validation-error@1.5.0_zod@3.25.76"
         }
       },
       "@trigger.dev/sdk@0.0.0-prerelease-20240825150620": {
@@ -839,7 +839,7 @@
           "@opentelemetry/api": "@opentelemetry/api@1.9.0",
           "@opentelemetry/api-logs": "@opentelemetry/api-logs@0.52.1",
           "@opentelemetry/semantic-conventions": "@opentelemetry/semantic-conventions@1.25.1",
-          "@trigger.dev/core": "@trigger.dev/core@0.0.0-prerelease-20240825150620_@opentelemetry+api@1.9.0_zod@3.22.3",
+          "@trigger.dev/core": "@trigger.dev/core@0.0.0-prerelease-20240825150620_@opentelemetry+api@1.9.0_zod@3.25.76",
           "chalk": "chalk@5.3.0",
           "cronstrue": "cronstrue@2.50.0",
           "debug": "debug@4.3.6",
@@ -850,7 +850,7 @@
           "ulid": "ulid@2.3.0",
           "uuid": "uuid@9.0.1",
           "ws": "ws@8.18.0",
-          "zod": "zod@3.22.3"
+          "zod": "zod@3.25.76"
         }
       },
       "@trigger.dev/sdk@2.3.19": {
@@ -870,7 +870,7 @@
           "ulid": "ulid@2.3.0",
           "uuid": "uuid@9.0.1",
           "ws": "ws@8.18.0",
-          "zod": "zod@3.22.3"
+          "zod": "zod@3.25.76"
         }
       },
       "@trigger.dev/sdk@3.0.0-beta.50": {
@@ -879,7 +879,7 @@
           "@opentelemetry/api": "@opentelemetry/api@1.9.0",
           "@opentelemetry/api-logs": "@opentelemetry/api-logs@0.48.0",
           "@opentelemetry/semantic-conventions": "@opentelemetry/semantic-conventions@1.25.1",
-          "@trigger.dev/core": "@trigger.dev/core@3.0.0-beta.50_@opentelemetry+api@1.9.0_@opentelemetry+api-logs@0.48.0_zod@3.22.3",
+          "@trigger.dev/core": "@trigger.dev/core@3.0.0-beta.50_@opentelemetry+api@1.9.0_@opentelemetry+api-logs@0.48.0_zod@3.25.76",
           "@trigger.dev/core-backend": "@trigger.dev/core-backend@3.0.0-beta.50",
           "chalk": "chalk@5.3.0",
           "cronstrue": "cronstrue@2.50.0",
@@ -894,7 +894,7 @@
           "ulid": "ulid@2.3.0",
           "uuid": "uuid@9.0.1",
           "ws": "ws@8.18.0",
-          "zod": "zod@3.22.3"
+          "zod": "zod@3.25.76"
         }
       },
       "@trigger.dev/sdk@3.0.0-beta.55": {
@@ -903,7 +903,7 @@
           "@opentelemetry/api": "@opentelemetry/api@1.9.0",
           "@opentelemetry/api-logs": "@opentelemetry/api-logs@0.48.0",
           "@opentelemetry/semantic-conventions": "@opentelemetry/semantic-conventions@1.25.1",
-          "@trigger.dev/core": "@trigger.dev/core@3.0.0-beta.55_@opentelemetry+api@1.9.0_@opentelemetry+api-logs@0.48.0_zod@3.22.3",
+          "@trigger.dev/core": "@trigger.dev/core@3.0.0-beta.55_@opentelemetry+api@1.9.0_@opentelemetry+api-logs@0.48.0_zod@3.25.76",
           "@trigger.dev/core-backend": "@trigger.dev/core-backend@3.0.0-beta.55",
           "chalk": "chalk@5.3.0",
           "cronstrue": "cronstrue@2.50.0",
@@ -918,7 +918,7 @@
           "ulid": "ulid@2.3.0",
           "uuid": "uuid@9.0.1",
           "ws": "ws@8.18.0",
-          "zod": "zod@3.22.3"
+          "zod": "zod@3.25.76"
         }
       },
       "@types/cookie@0.6.0": {
@@ -1707,17 +1707,17 @@
       "zod-error@1.5.0": {
         "integrity": "sha512-zzopKZ/skI9iXpqCEPj+iLCKl9b88E43ehcU+sbRoHuwGd9F1IDVGQ70TyO6kmfiRL1g4IXkjsXK+g1gLYl4WQ==",
         "dependencies": {
-          "zod": "zod@3.22.3"
+          "zod": "zod@3.25.76"
         }
       },
-      "zod-validation-error@1.5.0_zod@3.22.3": {
+      "zod-validation-error@1.5.0_zod@3.25.76": {
         "integrity": "sha512-/7eFkAI4qV0tcxMBB/3+d2c1P6jzzZYdYSlBuAklzMuCrJu5bzJfHS0yVAS87dRHVlhftd6RFJDIvv03JgkSbw==",
         "dependencies": {
-          "zod": "zod@3.22.3"
+          "zod": "zod@3.25.76"
         }
       },
-      "zod@3.22.3": {
-        "integrity": "sha512-EjIevzuJRiRPbVH4mGc8nApb/lVLKVpmUhAaR5R5doKGfAnGJ6Gr3CViAVjP+4FWSxCsybeWQdcgCtbX+7oZug==",
+      "zod@3.25.76": {
+        "integrity": "sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==",
         "dependencies": {}
       }
     }
