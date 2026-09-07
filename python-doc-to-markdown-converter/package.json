@@ -9,7 +9,7 @@
   "dependencies": {
     "@trigger.dev/python": "4.0.0-v4-beta.10",
     "@trigger.dev/sdk": "4.0.0-v4-beta.10",
-    "axios": "^1.12.0",
+    "axios": "^1.15.0",
     "latest": "^0.2.0"
   },
   "devDependencies": {
