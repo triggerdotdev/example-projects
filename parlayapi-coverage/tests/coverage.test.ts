@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { after, test } from "node:test";
+import { after, afterEach, test } from "node:test";
 import { context } from "@opentelemetry/api";
 import { isTracingSuppressed } from "@opentelemetry/core";
 import { AsyncLocalStorageContextManager } from "@opentelemetry/context-async-hooks";
@@ -12,10 +12,12 @@ const originalFetch = globalThis.fetch;
 const originalKey = process.env.PARLAY_API_KEY;
 const manager = new AsyncLocalStorageContextManager().enable();
 context.setGlobalContextManager(manager);
-after(() => {
+afterEach(() => {
   globalThis.fetch = originalFetch;
   if (originalKey === undefined) delete process.env.PARLAY_API_KEY;
   else process.env.PARLAY_API_KEY = originalKey;
+});
+after(() => {
   context.disable();
   manager.disable();
 });
@@ -91,6 +93,37 @@ test("missing, future and timezone-free market dates remain unknown", () => {
   }
 });
 
+test("calendar-invalid and malformed timestamps cannot become fresh through normalization", () => {
+  for (const value of [
+    "2026-02-30T00:00:00Z", "2026-02-29T00:00:00Z", "1900-02-29T00:00:00Z",
+    "2026-04-31T00:00:00Z", "2026-01-00T00:00:00Z", "2026-13-01T00:00:00Z",
+    "2026-03-01T24:00:00Z", "2026-03-01T00:60:00Z", "2026-03-01T00:00:60Z",
+    "2026-03-01T00:00:00+24:00", "2026-03-01T00:00:00+00:60",
+    "March 2, 2026 00:00:00Z", "2026-03-02 00:00:00Z",
+  ]) {
+    const body = sample();
+    body[0].bookmakers[0].markets[0].last_update = value;
+    const parsed = Date.parse(value);
+    const result = summarizeResponse(body, options, Number.isFinite(parsed) ? parsed + 20_000 : now);
+    assert.equal(result.unknownMarketAgeGroups, 1, value);
+    assert.equal(result.completeAndFreshGroups, 0, value);
+  }
+});
+
+test("valid leap dates, fractions and UTC offsets preserve market age", () => {
+  for (const value of [
+    "2024-02-29T23:59:59Z", "2000-02-29T00:00:00Z",
+    "2026-03-02T00:00:00.123Z", "2026-03-02T05:30:00+05:30",
+    "2026-03-01T19:00:00-05:00",
+  ]) {
+    const body = sample();
+    body[0].bookmakers[0].markets[0].last_update = value;
+    const result = summarizeResponse(body, options, Date.parse(value) + 20_000);
+    assert.equal(result.oldestKnownMarketAgeSeconds, 20, value);
+    assert.equal(result.completeAndFreshGroups, 1, value);
+  }
+});
+
 test("wrong sport, bookmaker and market fail closed", () => {
   for (const change of ["sport", "book", "market"]) {
     const body = sample();
@@ -132,6 +165,7 @@ test("live request is single, private and trace-suppressed through body reading"
 });
 
 test("errors, truncation, malformed JSON and oversize bodies are redacted without retry", async () => {
+  process.env.PARLAY_API_KEY = "PRIVATE_KEY";
   for (const response of [
     () => new Response("PRIVATE_SECRET", { status: 401 }),
     () => new Response("PRIVATE_SECRET", { status: 429 }),
@@ -152,10 +186,14 @@ test("errors, truncation, malformed JSON and oversize bodies are redacted withou
 });
 
 test("invalid input and absent environment key never make a request", async () => {
-  globalThis.fetch = async () => { assert.fail("Invalid input sent a request"); };
+  process.env.PARLAY_API_KEY = "PRIVATE_KEY";
+  let requests = 0;
+  globalThis.fetch = async () => { requests++; return new Response("[]"); };
   for (const payload of [null, { apiKey: "PRIVATE_KEY" }, { mode: "live", ...options, sport: "../secret" }, { mode: "live", ...options, bookmaker: "pinnacle,other" }, { mode: "live", ...options, expectedOutcomes: 4 }]) {
     await assert.rejects(checkCoverage(payload));
+    assert.equal(requests, 0);
   }
   delete process.env.PARLAY_API_KEY;
   await assert.rejects(checkCoverage({ mode: "live", ...options }));
+  assert.equal(requests, 0);
 });

@@ -18,6 +18,19 @@ function invalid(): never {
   throw new Error("Unexpected response shape or scope. No coverage conclusion is available.");
 }
 
+function marketTimestamp(value: unknown) {
+  if (typeof value !== "string") return NaN;
+  const match = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.\d+)?(?:Z|[+-](\d{2}):(\d{2}))$/i.exec(value);
+  if (!match) return NaN;
+  const [year, month, day, hour, minute, second] = match.slice(1, 7).map(Number);
+  const leapYear = year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
+  const daysInMonth = [31, leapYear ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  if (month < 1 || month > 12 || day < 1 || day > daysInMonth[month - 1] ||
+    hour > 23 || minute > 59 || second > 59 ||
+    Number(match[7] ?? 0) > 23 || Number(match[8] ?? 0) > 59) return NaN;
+  return Date.parse(value);
+}
+
 function summarize(groups: Group[], synthetic: boolean, maxAgeSeconds: number) {
   const ages = groups.flatMap((g) => g.ageSeconds === null ? [] : [g.ageSeconds]);
   return {
@@ -74,8 +87,7 @@ export function summarizeResponse(body: unknown, options: Options, now = Date.no
       if (isRecord(outcome) && typeof outcome.name === "string") names.add(outcome.name);
     }
     complete = complete && [...expected].every((name) => names.has(name));
-    const timestamp = typeof market.last_update === "string" &&
-      /(?:Z|[+-]\d\d:\d\d)$/.test(market.last_update) ? Date.parse(market.last_update) : NaN;
+    const timestamp = marketTimestamp(market.last_update);
     const age = (now - timestamp) / 1000;
     groups.push({ complete, ageSeconds: Number.isFinite(age) && age >= 0 ? Math.ceil(age) : null });
   }
